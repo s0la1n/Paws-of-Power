@@ -14,17 +14,15 @@ return new class extends Migration
             $table->foreign('username')->references('username')->on('users')->onDelete('cascade');
             $table->string('name');
             
-            // Базовые характеристики
             $table->integer('strength')->default(1);
             $table->integer('agility')->default(1);
             $table->integer('intelligence')->default(1);
             
-            // Бонусы от активных бустов
             $table->integer('strength_bonus')->default(0);
             $table->integer('agility_bonus')->default(0);
             $table->integer('intelligence_bonus')->default(0);
             
-            // Внешний вид
+            // Foreign keys на существующие таблицы
             $table->foreignId('ear_id')->constrained('character_customizations');
             $table->foreignId('tail_id')->constrained('character_customizations');
             $table->foreignId('coat_id')->constrained('character_customizations');
@@ -35,7 +33,6 @@ return new class extends Migration
             $table->foreignId('active_boost_2')->nullable()->constrained('inventories');
             
             $table->timestamps();
-            
             $table->index(['username']);
         });
     }

@@ -14,7 +14,6 @@ return new class extends Migration
             $table->enum('type', ['ear', 'tail', 'coat']);
             $table->string('asset_url');
             $table->string('color_code')->nullable(); // Только для окрасов
-            $table->integer('price')->default(0);
             $table->boolean('is_default')->default(false);
             $table->timestamps();
             
